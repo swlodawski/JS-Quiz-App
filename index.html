@@ -25,8 +25,35 @@
             </p>
         </div>
     </header>
+<main class="quiz">
+    <div id="quiz-start">
+        <div class="landing" id="start-screen">
+            <h1 id="top">Sammys Quiz</h1>
+            <h1>Bend You Simple Mind</h1>
+            <p>Try to answer the following code related questions within the time limit. 
+                Keep in mind incorect answers with penalize your score and time by ten seconds.
+            </p>
+            <button id="start">Start Quiz</button>
+        </div>
+    </div>
 
-    
+    <div class="hide" id="quiz-end">
+        <h2>You are done, Congratulations!! Loser</h2>
+        <p>Your final score is:
+            <span id="score-final"></span>
+        </p>
+        <p>Please enter your name:
+            <input 
+            type="text"
+            id="name"
+            max="3" />
+            <button id="submit-score">Submit</button>
+        </p>
+    </div>
+
+    <div id="feedback" class="feedback-hide"></div>
+</main>
+
 <script src="./script.js"></script>   
 </body>
 </html>
