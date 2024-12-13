@@ -41,3 +41,11 @@ let questions = [
     },
 ];
 
+let questionsEl =  document.querySelector("#questions");
+let timerEl = document.querySelector("#timer");
+let choicesEl = document.querySelector("#options");
+let submitBtn = document.querySelector("#submit-score");
+let nameEl = document.querySelector("#name");
+let feedbackEl = document.querySelector("#feedback");
+let reStartBtn = document.querySelector("#retart");
+
