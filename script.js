@@ -49,3 +49,37 @@ let nameEl = document.querySelector("#name");
 let feedbackEl = document.querySelector("#feedback");
 let reStartBtn = document.querySelector("#retart");
 
+let currentQuestionIndex = 0;
+let time = questions.length * 15;
+let timerId;
+
+function quizStart () {
+    timerId = setInterval(clockTick, 1000);
+    timerEl.textContent = time;
+    let landingScreenEl = document.getElementById("start-screen");
+    landingScreenEl.setAttribute("class", "hide");
+
+    questionsEl.removeAttribute("class");
+
+    getQuestion();
+}
+
+function getQuestion () {
+    let currentQuestion = questions[currentQuestionIndex];
+    let promptEl = document.getElementById("question-words");
+
+    promptEl.textContent = currentQuestion.prompt;
+    choicesEl.innerHTML = "";
+    currentQuestion.options.forEach(
+        function (choice, i) {
+            let choiceBtn = document.createElement("button");
+            choiceBtn.setAttribute("value", choice);
+
+            choiceBtn.textContent = i + 1 + "," + choice;
+            choiceBtn.onclick = questionClick;
+            choicesEl.appendChild(
+                choiceBtn
+            );
+        }
+    );
+}
