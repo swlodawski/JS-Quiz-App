@@ -109,3 +109,23 @@ function questionClick () {
             getQuestion();
         }
 }
+
+function quizEnd() {
+    clearInterval(timerId);
+    let endScreenEl = document.getElementById("quiz-end");
+    endScreenEl.removeAttribute("class");
+
+    let finalScoreEl = document.getElementById("score-final");
+
+    finalScoreEl.textContent = time;
+    questionsEl.setAttribute("class", "hide");
+}
+
+function clockTick() {
+    time--;
+    timerEl.textContent = time;
+    if (time <= 0) {
+        quizEnd();
+    }
+}
+
