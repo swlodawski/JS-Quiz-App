@@ -46,8 +46,9 @@ let timerEl = document.querySelector("#timer");
 let choicesEl = document.querySelector("#options");
 let submitBtn = document.querySelector("#submit-score");
 let nameEl = document.querySelector("#name");
+let startBtn = document.querySelector("#start");
 let feedbackEl = document.querySelector("#feedback");
-let reStartBtn = document.querySelector("#retart");
+let reStartBtn = document.querySelector("#restart");
 
 let currentQuestionIndex = 0;
 let time = questions.length * 15;
@@ -129,3 +130,32 @@ function clockTick() {
     }
 }
 
+function saveHighScore() {
+    let name = nameEl.value.trim();
+    if (name !== "") {
+        let highscores = JSON.parse(window.localStorage.getItem(
+            "highscores"
+        )
+            ) || [];
+            let newScore = {
+                score: time,
+                name: name,
+            };
+    highscores.push(newScore);
+    window.localStorage.setItem("highscores", JSON.stringify(highscores));
+
+    alert("Your score has been submitted")
+    }
+}
+
+function checkForEnter(event) {
+    if(event.key === "Enter") {
+        saveHighScore();
+        alert("Your score has been submitted");
+    }
+}
+nameEl.onkeyup = checkForEnter;
+
+submitBtn.onclick = saveHighScore;
+
+startBtn.onclick = quizStart;
